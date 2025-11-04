@@ -5,6 +5,7 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const useUserRole = () => {
   const { user, loading: authLoading } = useAuth();
+  console.log("currentUser", user)
   const axiosSecure  = useAxiosSecure();
 
   const {
@@ -30,8 +31,11 @@ const useUserRole = () => {
       }
 
       try {
+        const token = await user.getIdToken(true); // 🔑 Firebase token
         const encodedEmail = encodeURIComponent(user.email);
+
         const response = await axiosSecure.get(`/users/${encodedEmail}/role`, {
+          headers: { Authorization: `Bearer ${token}` }, // 🔑 attach token
           timeout: 10000,
         });
 

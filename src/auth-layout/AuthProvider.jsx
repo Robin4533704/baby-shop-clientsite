@@ -10,6 +10,7 @@ import {
   GoogleAuthProvider,
   updateProfile,
   sendPasswordResetEmail,
+  getAuth,
 } from "firebase/auth";
 
 import { GithubAuthProvider } from "firebase/auth/web-extension";
@@ -121,24 +122,37 @@ const AuthProvider = ({ children }) => {
 
 useEffect(() => {
   const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-    setUser(currentUser);
-    console.log("👤 User state changed:", currentUser);
-
     if (currentUser) {
       const token = await currentUser.getIdToken(true);
       localStorage.setItem("fbToken", token);
       console.log("🔐 FB Token saved:", token);
-      
     } else {
-      
       localStorage.removeItem("fbToken");
-      localStorage.removeItem('token');
     }
-    setLoading(false);
   });
-
   return () => unsubscribe();
 }, []);
+
+ useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      setUser(currentUser);
+
+      if (currentUser) {
+        // Firebase token save
+        const token = await currentUser.getIdToken(true);
+        localStorage.setItem("fbToken", token);
+        console.log("🔐 Token saved in localStorage:", token);
+      } else {
+        localStorage.removeItem("fbToken");
+      }
+
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
 
   const authInfo = {
      user,createUser,

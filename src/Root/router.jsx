@@ -28,6 +28,8 @@ import CategoriesShowcase from "../page/CategoriesShowcase";
 import ButtonCheckoutPage from "../orderpage/ButtonCheckoutPage";
 import Categories from "../page/Categories";
 import PrivetRoute from "../hooks/privetRout";
+import Blog from "../page/Blog";
+import Analytics from "../page/Analytics";
 
 
 
@@ -46,11 +48,13 @@ const router = createBrowserRouter([
       {path: "/cardpage", element:<CartPage/>},
       {path: "/checkout/:productId", element:<CheckoutPage/>},
       {path:"/about", element:<AboutPage/>},
+      {path:"/blog", element:<Blog/>},
       {path:"/contact", element:<Contact/>},
       {path:"/notifications", elements:<PrivetRoute><NotificationTab/></PrivetRoute>},
       {path:"/category", element:<CategoriesShowcase/>},
       {path:"/buttonchack", element:<ButtonCheckoutPage/>},
-      {path:"/categories", element:<PrivetRoute><Categories/></PrivetRoute>}
+      {path:"/categories", element:<PrivetRoute><Categories/></PrivetRoute>},
+    
       
       
     ],
@@ -70,7 +74,8 @@ const router = createBrowserRouter([
        {path:"revenue", element:<RevenueDashboard/>},
        {path:"settings", element:<Settings/>},
         {path:"myorders", element:<MyOrders/>},
-        {path:"myaddresses", element:<MyAddresses/>}
+        {path:"myaddresses", element:<MyAddresses/>},
+          {path:"analytics", element:<Analytics/>}
     ],
   },
 ]);

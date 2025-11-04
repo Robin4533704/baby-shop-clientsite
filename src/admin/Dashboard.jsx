@@ -205,7 +205,7 @@ const Dashboard = () => {
       id: "revenue", 
       name: "Revenue Analytics", 
       icon: <FaMoneyBillWave className="text-lg" />, 
-      path: "/dashboard/revenue", 
+      path: "/dashboard/analytics", 
       description: "Sales reports" 
     },
     { 

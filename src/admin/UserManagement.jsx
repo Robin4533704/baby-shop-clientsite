@@ -16,110 +16,90 @@ import {
 import { toast } from "react-toastify";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import UseAuth from "../auth-layout/useAuth";
 
 const UserManagement = () => {
+  const { user, loading: authLoading } = UseAuth();
+  const { role: currentUserRole } = useUserRole();
+  const axiosSecure = useAxiosSecure();
+
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(null);
   const [actionLoading, setActionLoading] = useState(null);
-  const { role: currentUserRole } = useUserRole();
-  const axiosSecure = useAxiosSecure();
 
-const fetchUsers = async () => {
-  try {
-    setLoading(true);
-    setError(null);
-    const response = await axiosSecure.get("/users");
-    const data = response.data;
+  const fetchUsers = async () => {
+    if (!user) return; 
 
-    console.log('API response:', data);
+    try {
+      setLoading(true);
+      setError(null);
 
-    if (data?.success && Array.isArray(data?.users)) {
-      setUsers(data.users);
-    } else {
-      console.error("❌ Unexpected response format:", data);
-      throw new Error("Invalid response format from server");
+      const response = await axiosSecure.get("/users");
+      const data = response.data;
+
+      if (data?.success && Array.isArray(data?.users)) {
+        setUsers(data.users);
+      } else {
+        throw new Error("Invalid response format from server");
+      }
+    } catch (err) {
+      console.error(err);
+      setError(err.response?.data?.message || err.message);
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    console.error("❌ Fetch users error:", err);
-    const errorMessage = err.response?.data?.message || err.message || "Failed to load users";
-    setError(errorMessage);
-    toast.error(`Failed to load users: ${errorMessage}`);
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
-  useEffect(() => {
-    if (currentUserRole === "admin") {
+
+ useEffect(() => {
+    if (!authLoading && user && currentUserRole === "admin") {
       fetchUsers();
     }
-  }, [currentUserRole]);
+  }, [authLoading, user, currentUserRole]);
 
-// Make user admin
-const makeAdmin = async (userId, userName) => {
-  setActionLoading(userId);
-
-  try {
-        // যদি userId এর মান নিশ্চিত করতে চান
-    if (typeof userId === 'string') {
-      console.log("Is userId a string?", typeof userId === 'string');
+ // Make user admin
+  const makeAdmin = async (userId, userName) => {
+    setActionLoading(userId);
+    try {
+      const response = await axiosSecure.patch(`/users/${userId}/role`, { role: "admin" });
+      if (response.data?.success || response.status === 200 || response.data?.role === "admin") {
+        toast.success(`✅ ${userName} is now an admin`);
+        await fetchUsers();
+      } else {
+        throw new Error(response.data?.message || "Failed to update role");
+      }
+    } catch (err) {
+      console.error("❌ Make admin error:", err);
+      const errorMessage = err.response?.data?.message || err.message || "Failed to update role";
+      toast.error(`Failed to make admin: ${errorMessage}`);
+    } finally {
+      setActionLoading(null);
     }
+  };
 
-    // API কলের আগে
-    const response = await axiosSecure.patch(`/users/${userId}/role`, { role: "admin" });
-
-    
-    // সফলতার চেক
-    if (response.data?.success || response.status === 200 || response.data?.role === "admin") {
-      toast.success(`✅ ${userName} is now an admin`);
-      await fetchUsers();
-    } else {
-      throw new Error(response.data?.message || "Failed to update role");
+  // Remove admin role
+  const removeAdmin = async (userId, userName) => {
+    setActionLoading(userId);
+    try {
+      const response = await axiosSecure.patch(`/users/${userId}/role`, { role: "user" });
+      if (response.data?.success || response.status === 200 || response.data?.role === "user") {
+        toast.success(`✅ Admin role removed from ${userName}`);
+        await fetchUsers();
+      } else {
+        throw new Error(response.data?.message || "Failed to update role");
+      }
+    } catch (err) {
+      console.error("❌ Remove admin error:", err);
+      const errorMessage = err.response?.data?.message || err.message || "Failed to update role";
+      toast.error(`Failed to remove admin: ${errorMessage}`);
+    } finally {
+      setActionLoading(null);
     }
-  } catch (err) {
-    console.error("❌ Make admin error:", err);
-    // error এর বিস্তারিত দেখতে
-    if (err.response) {
-      console.log("Error response data:", err.response.data);
-      console.log("Error response status:", err.response.status);
-    }
-    const errorMessage = err.response?.data?.message || err.message || "Failed to update role";
-    toast.error(`Failed to make admin: ${errorMessage}`);
-  } finally {
-    setActionLoading(null);
-  }
-};
+  };
 
-// Remove admin role
-const removeAdmin = async (userId, userName) => {
-  setActionLoading(userId);
-
-  try {
-    console.log(`🔧 Removing admin role from ${userName}...`);
-
-    const response = await axiosSecure.patch(`/users/${userId}/role`, { role: "user" });
-    console.log("✅ Remove admin response:", response.data);
-
-    // Flexible success check
-    if (response.data?.success || response.status === 200 || response.data?.role === "user") {
-      toast.success(`✅ Admin role removed from ${userName}`);
-      await fetchUsers();
-    } else {
-      throw new Error(response.data?.message || "Failed to update role");
-    }
-  } catch (err) {
-    console.error("❌ Remove admin error:", err);
-    const errorMessage = err.response?.data?.message || err.message || "Failed to update role";
-    toast.error(`Failed to remove admin: ${errorMessage}`);
-  } finally {
-    setActionLoading(null);
-  }
-};
-
-
-  // Delete user - SIMPLIFIED VERSION
+  // Delete user
   const deleteUser = async (userId, userName) => {
     const result = await Swal.fire({
       title: 'Delete User?',
@@ -137,14 +117,8 @@ const removeAdmin = async (userId, userName) => {
     setActionLoading(userId);
     
     try {
-      console.log(`🗑️ Deleting user ${userId}...`);
-      
       const response = await axiosSecure.delete(`/users/${userId}`);
-      
-      console.log("✅ Delete user response:", response);
-      
-      // Flexible success checking
-      if (response.data?.success || response.data?.message || response.status === 200) {
+      if (response.data?.success || response.status === 200) {
         toast.success(`🗑️ User ${userName} deleted successfully`);
         await fetchUsers();
       } else {
@@ -158,6 +132,7 @@ const removeAdmin = async (userId, userName) => {
       setActionLoading(null);
     }
   };
+
 
   // Filter users based on search
   const filteredUsers = users.filter(

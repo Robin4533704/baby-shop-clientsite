@@ -17,7 +17,7 @@ import {
   ChevronDown,
   Shield,
   BarChart3,
-  ShoppingBag,Layers
+  ShoppingBag,Layers,BookOpen
 } from "lucide-react";
 
 import useUserRole from "../hooks/useUserRole";
@@ -116,7 +116,7 @@ const ProfileDropdown = ({ user, role, onLogout }) => {
 
               {role === "admin" && (
                 <Link
-                  to="#"
+                  to="/dashbord/analytics"
                   className="flex items-center space-x-3 px-3 py-2.5 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-xl transition-all duration-200"
                   onClick={() => setOpen(false)}
                 >
@@ -126,7 +126,7 @@ const ProfileDropdown = ({ user, role, onLogout }) => {
               )}
 
               <Link
-                to="/setting"
+                to="/dashbord/setting"
                 className="flex items-center space-x-3 px-3 py-2.5 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
                 onClick={() => setOpen(false)}
               >
@@ -183,9 +183,10 @@ const Navbar = () => {
 
   const menuItems = [
     { path: "/", label: "Home", icon: <Home className="w-4 h-4" /> },
-    { path: "/products", label: "Products", icon: <Package className="w-4 h-4" /> },
+    { path: "/products", label: "Shops", icon: <Package className="w-4 h-4" /> },
     { path: "/about", label: "About", icon: <Info className="w-4 h-4" /> },
     { path: "/contact", label: "Contact", icon: <Phone className="w-4 h-4" /> },
+    { path: "/blog", label: "Blogs", icon: <BookOpen className="w-4 h-4" /> },
     { path: "/categories", label: "Category", icon: <Layers className="w-4 h-4" />  },
   ];
 
