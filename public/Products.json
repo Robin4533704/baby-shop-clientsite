@@ -1,0 +1,264 @@
+[
+  {
+    "id": 3,
+    "name": "Educational Baby Toys",
+    "price": 400,
+    "category": "toys",
+    "image": "https://i.ibb.co.com/wrrpqMKF/download-21.jpg",
+    "rating": 4.3,
+    "reviewCount": 67,
+    "description": "Colorful educational toys for brain development",
+    "ageRange": "0-3 Months",
+     "brand": "Baby Shop",
+   "stock": 80,
+     "features": [
+    "soft cotton"
+  ],
+  "discount": 8,
+  "status": "active",
+  "discountedPrice": 92,
+  "createdAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  }
+  },
+  {
+    "id": 4,
+    "name": "Baby Feeding Bottle Set",
+    "price": 28.75,
+    "category": "feeding",
+    "image": "https://i.ibb.co.com/KxdD5qBY/download-22.jpg",
+    "rating": 4.6,
+    "reviewCount": 156,
+    "inStock": 150,
+    "description": "BPA-free feeding bottle set",
+     "ageRange": "0-3 Months",
+     "brand": "Baby Shop",
+   "stock": 80,
+     "features": [
+    "Nice toys"
+  ],
+  "discount": 8,
+  "status": "active",
+  "discountedPrice": 92,
+  "createdAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  }
+  },
+  {
+    "id": 5,
+    "name": "Baby Stroller Premium",
+    "price": 199.99,
+    "originalPrice": 249.99,
+    "category": "gear",
+    "image": "https://i.ibb.co.com/rRFNLWvC/240-F-195666965-b-F0-Vz-VDP4v-U6-NAn4-NKdu-Lk-YCg5-Suq-U5-H.jpg",
+    "rating": 4.7,
+    "reviewCount": 203,
+    "inStock": 75,
+    "description": "Lightweight foldable baby stroller",
+     "ageRange": "0-3 Months",
+     "brand": "Baby Shop",
+   "stock": 80,
+     "features": [
+    "soft cotton"
+  ],
+  "discount": 8,
+  "status": "active",
+  "discountedPrice": 92,
+  "createdAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  }
+  },
+  {
+    "id": 6,
+    "name": "Baby Skin Care Kit",
+    "price": 490,
+    "category": "care",
+    "image": "https://i.ibb.co.com/b56DjPRy/download-24.jpg",
+    "rating": 4.4,
+    "reviewCount": 78,
+    "inStock": false,
+    "description": "Gentle skincare products for babies",
+     "ageRange": "0-3 Months",
+     "brand": "Baby Shop",
+   "stock": 80,
+     "features": [
+    "soft"
+  ],
+  "discount": 8,
+  "status": "active",
+  "discountedPrice": 92,
+  "createdAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  }
+  },
+  {
+    "id": 7,
+    "name": "Baby Monitor Camera",
+    "price": 89.99,
+    "originalPrice": 2500,
+    "category": "safety",
+    "image": "https://i.ibb.co.com/d0gzCWNP/images-8.jpg",
+    "rating": 4.9,
+    "reviewCount": 145,
+    "Stock": 45,
+    "description": "HD video baby monitor with night vision",
+     "ageRange": "0-3 Months",
+     "brand": "Baby Shop",
+   "stock": 80,
+     "features": [
+    "soft cotton"
+  ],
+  "discount": 8,
+  "status": "active",
+  "discountedPrice": 92,
+  "createdAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  }
+  },
+  {
+    "id": 8,
+    "name": "Baby Bath Tub",
+    "price": 450,
+    "category": "bathing",
+    "image": "https://i.ibb.co.com/TqPPhHBq/images-10.jpg",
+    "rating": 4.2,
+    "reviewCount": 92,
+    "Stock": 90,
+    "description": "Safe and comfortable baby bath tub",
+     "ageRange": "0-3 Months",
+     "brand": "Baby Shop",
+   "stock": 80,
+     "features": [
+    "soft cotton"
+  ],
+  "discount": 8,
+  "status": "active",
+  "discountedPrice": 92,
+  "createdAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  }
+  },
+  {
+    "id": 9,
+    "name": "Baby Food Maker",
+    "price": 75.5,
+    "originalPrice": 89.99,
+    "category": "feeding",
+    "image": "https://i.ibb.co.com/B5D7Kx1m/download-27.jpg",
+    "rating": 4.5,
+    "reviewCount": 112,
+    "Stock": 150,
+    "description": "Automatic baby food blender and steamer",
+     "ageRange": "0-3 Months",
+     "brand": "Baby Shop",
+   "stock": 80,
+     "features": [
+    "Good"
+  ],
+  "discount": 8,
+  "status": "active",
+  "discountedPrice": 92,
+  "createdAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  }
+  },
+  {
+    "id": 10,
+    "name": "Baby Carrier",
+    "price": 65.99,
+    "category": "gear",
+    "image": "https://i.ibb.co.com/0jq0zfPq/download-29.jpg",
+    "rating": 4.6,
+    "reviewCount": 87,
+    "inStock": 40,
+    "description": "Ergonomic baby carrier for parents",
+     "ageRange": "0-3 Months",
+     "brand": "Baby Shop",
+   "stock": 80,
+     "features": [
+    "soft cotton"
+  ],
+  "discount": 8,
+  "status": "active",
+  "discountedPrice": 92,
+  "createdAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  }
+  },
+  {
+    "id": 11,
+    "name": "Baby Sleeping Bag",
+    "price": 399,
+    "category": "sleeping",
+    "image": "https://i.ibb.co.com/jPrrxPx8/download-28.jpg",
+    "rating": 4.3,
+    "reviewCount": 64,
+    "Stock": true,
+    "description": "Comfortable sleeping bag for babies",
+     "ageRange": "0-3 Months",
+     "brand": "Baby Shop",
+   "stock": 80,
+     "features": [
+    "soft cotton"
+  ],
+  "discount": 8,
+  "status": "active",
+  "discountedPrice": 92,
+  "createdAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  }
+  },
+  {
+    "id": 12,
+    "name": "Baby First Aid Kit",
+    "price": 599,
+    "category": "safety",
+    "image": "https://i.ibb.co.com/RkL6f891/images-15.jpg",
+    "rating": 4.7,
+    "reviewCount": 56,
+    "Stock": 20,
+    "description": "Essential first aid supplies for babies",
+     "ageRange": "0-3 Months",
+     "brand": "Baby Shop",
+   "stock": 80,
+     "features": [
+    "soft"
+  ],
+  "discount": 8,
+  "status": "active",
+  "discountedPrice": 92,
+  "createdAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T19:36:07.409Z"
+  }
+  }
+]

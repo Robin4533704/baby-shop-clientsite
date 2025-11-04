@@ -1,0 +1,11 @@
+[
+  { "id": 1, "name": "Bathing" },
+  { "id": 2, "name": "Care" },
+  { "id": 3, "name": "Clothing" },
+  { "id": 4, "name": "Diapering" },
+  { "id": 5, "name": "Feeding" },
+  { "id": 6, "name": "Gear" },
+  { "id": 7, "name": "Safety" },
+  { "id": 8, "name": "Sleeping" },
+  { "id": 9, "name": "Toys" }
+];
