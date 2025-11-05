@@ -8,19 +8,17 @@ import ProductDetails from "../page/ProductDetails";
 
 // ✅ Admin Components"
 import UserManagement from "../admin/UserManagement";
-import CartPage from "../page/CartPage";
+// import CartPage from "../page/CartPage";
 import CheckoutPage from "../page/CheckoutPage";
 import OrderNowPage from "../page/OrderPage";
 import AboutPage from "../page/AboutPage";
 import Dashboard from "../admin/Dashboard";
-import AddProduct from "../admin/AddProducts";
-import MyOrder from "../page/MyOrder";
+
 import Contact from "../Nav-Section/Contact";
 import Overview from "../admin/OverView";
 import ManageProducts from "../admin/ManageProducts";
 import RevenueDashboard from "../admin/RevenueDashboard";
 import Settings from "../admin/Setting";
-import { elements } from "chart.js";
 import NotificationTab from "../admin/NotificationTabe";
 import MyOrders from "../orderpage/MyOrderPage";
 import MyAddresses from "../orderpage/AddressesPage";
@@ -30,6 +28,9 @@ import Categories from "../page/Categories";
 import PrivetRoute from "../hooks/privetRout";
 import Blog from "../page/Blog";
 import Analytics from "../page/Analytics";
+import AddProduct from "../admin/AddProducts";
+import CartButton from "../cartbutton/CartButton";
+import EditProduct from "../Nav-Section/EditProduct";
 
 
 
@@ -45,7 +46,8 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/products", element: <PrivetRoute><Products /></PrivetRoute>},
       { path: "/products/:id", element: <PrivetRoute><ProductDetails /></PrivetRoute>},
-      {path: "/cardpage", element:<CartPage/>},
+      // {path: "/cardpage", element:<CartPage/>},
+      {path:"/cartbutton", element: <CartButton/>},
       {path: "/checkout/:productId", element:<CheckoutPage/>},
       {path:"/about", element:<AboutPage/>},
       {path:"/blog", element:<Blog/>},
@@ -67,7 +69,6 @@ const router = createBrowserRouter([
     children: [
       { path: "add-product", element: <AddProduct/> },
       { path: "users", element: <UserManagement/> },
-      {path:"myorder", element:<MyOrder/>},
        {path:"orders", element:<OrderNowPage/>},
        {path:"overview", element: <Overview/>},
        {path:"Products-manaz", element:<ManageProducts/>},
@@ -75,7 +76,8 @@ const router = createBrowserRouter([
        {path:"settings", element:<Settings/>},
         {path:"myorders", element:<MyOrders/>},
         {path:"myaddresses", element:<MyAddresses/>},
-          {path:"analytics", element:<Analytics/>}
+          {path:"analytics", element:<Analytics/>},
+          {path:"edit-product/:id", element:<EditProduct/>}
     ],
   },
 ]);

@@ -99,16 +99,8 @@ const Login = () => {
         transition={{ duration: 0.5 }}
         className="max-w-md w-full"
       >
-        {/* Back Button */}
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => navigate(-1)}
-          className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors"
-        >
-          <ArrowLeft className="w-5 h-5" />
-          <span>Back</span>
-        </motion.button>
+      
+        
 
         {/* Login Card */}
         <div className="bg-white rounded-3xl shadow-2xl p-8">

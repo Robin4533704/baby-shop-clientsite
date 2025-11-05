@@ -92,7 +92,7 @@ const Register = () => {
       // 3️⃣ Get Firebase token
       const token = await firebaseUser.getIdToken(true);
 
-      // 4️⃣ Prepare backend user data
+     
       const userInfo = {
         uid: firebaseUser.uid,
         email: firebaseUser.email.toLowerCase(),
@@ -148,10 +148,10 @@ const Register = () => {
       </AnimatePresence>
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-md w-full">
-        <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate(-1)} className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors">
+        {/* <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate(-1)} className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors">
           <ArrowLeft className="w-5 h-5" />
           <span>Back</span>
-        </motion.button>
+        </motion.button> */}
 
         <div className="bg-white rounded-3xl shadow-2xl p-8">
           <div className="text-center mb-8">
