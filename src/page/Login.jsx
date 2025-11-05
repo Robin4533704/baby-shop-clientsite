@@ -99,9 +99,6 @@ const Login = () => {
         transition={{ duration: 0.5 }}
         className="max-w-md w-full"
       >
-      
-        
-
         {/* Login Card */}
         <div className="bg-white rounded-3xl shadow-2xl p-8">
           <div className="text-center mb-8">
